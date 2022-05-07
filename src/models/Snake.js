@@ -1,8 +1,12 @@
+import { getNearestDirections, validateDirection } from "./Direction.js";
 import { SnakeSegment } from "./SnakeSegment.js";
 
 export class Snake {
   /** @type {SnakeSegment[]} */
   #segments = [];
+
+  /** @type {boolean} */
+  #canChangeDirection = true;
 
   /** @type {Direction} */
   #direction = "right";
@@ -30,17 +34,13 @@ export class Snake {
    * @param {Direction} direction
    */
   set direction(direction) {
-    switch (direction) {
-      case "left":
-      case "top":
-      case "right":
-      case "bottom":
-        this.#direction = direction;
-        break;
-      default:
-        throw new Error(
-          `Unexpected direction: "${direction}". Expected: "left", "top", "right" or "bottom".`
-        );
+    validateDirection(direction);
+    if (!this.#canChangeDirection) return;
+
+    if (getNearestDirections(this.#direction).includes(direction)) {
+      this.#direction = direction;
+      // do not allow to change direction untill next move
+      this.#canChangeDirection = false;
     }
   }
 
@@ -74,6 +74,7 @@ export class Snake {
     } else {
       this.#segments.pop();
     }
+    this.#canChangeDirection = true;
   }
 
   eat() {

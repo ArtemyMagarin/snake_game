@@ -1,3 +1,5 @@
+import { validateDirection } from "./Direction.js";
+
 /**
  * Represents coordinate
  */
@@ -50,6 +52,7 @@ export class Coordinate {
    * @param {number} delta moves to this amount. Deafault is 1
    */
   move(direction, delta = 1) {
+    validateDirection(direction);
     switch (direction) {
       case "left":
         this.left(delta);
@@ -63,10 +66,6 @@ export class Coordinate {
       case "bottom":
         this.bottom(delta);
         break;
-      default:
-        throw new Error(
-          `Unexpected direction: "${direction}". Expected: "left", "top", "right" or "bottom".`
-        );
     }
   }
 
