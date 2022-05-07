@@ -1,12 +1,10 @@
-import { BoxedCoordinate } from "./BoxedCoordinate";
-
 /**
  * Represents snake's food
  */
 export class Food {
   /**
    * @constructor
-   * @param {BoxedCoordinate} coordinate position of food
+   * @param {import('./BoxedCoordinate').BoxedCoordinate} coordinate position of food
    * @param {number} score amount of points for reaching this food
    */
   constructor(coordinate, score) {

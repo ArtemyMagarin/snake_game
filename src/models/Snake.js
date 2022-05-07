@@ -1,4 +1,4 @@
-import { SnakeSegment } from "./SnakeSegment";
+import { SnakeSegment } from "./SnakeSegment.js";
 
 export class Snake {
   /** @type {SnakeSegment[]} */
@@ -65,7 +65,7 @@ export class Snake {
     const newHeadCoordinate = this.#segments[0].coordinate.copy();
     newHeadCoordinate.move(this.#direction);
 
-    this.#segments.splice(0, 0, new SnakeSegment(newHeadCoordinate));
+    this.#segments = [new SnakeSegment(newHeadCoordinate), ...this.#segments];
 
     // if last segment contins food, keep the segment and remove food
     // otherwise remove the last segment to preserve snake's size
@@ -78,5 +78,9 @@ export class Snake {
 
   eat() {
     this.#segments[0].hasFood = true;
+  }
+
+  log(logger) {
+    logger(this.#segments);
   }
 }

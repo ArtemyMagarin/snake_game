@@ -23,6 +23,6 @@ export class SnakeSegment {
   }
 
   get hasFood() {
-    this.#hasFood;
+    return this.#hasFood;
   }
 }

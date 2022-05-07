@@ -1,4 +1,4 @@
-import { Coordinate } from "./Coordinate";
+import { Coordinate } from "./Coordinate.js";
 
 /**
  * Keeps value between boundaries.
