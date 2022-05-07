@@ -46,7 +46,7 @@ export class Coordinate {
 
   /**
    * Moves coordinate to the givent direction.
-   * @param {'left'|'top'|'right'|'bottom'} direction
+   * @param {Direction} direction
    * @param {number} delta moves to this amount. Deafault is 1
    */
   move(direction, delta = 1) {

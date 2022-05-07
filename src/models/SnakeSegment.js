@@ -2,12 +2,17 @@
  * Represents snake's segment
  */
 export class SnakeSegment {
+  /** @type {boolean} */
+  #hasFood = false;
+
+  /** @type {import('./BoxedCoordinate').BoxedCoordinate} coordinate */
+  coordinate;
+
   /**
    * @param {import('./BoxedCoordinate').BoxedCoordinate} coordinate
    */
   constructor(coordinate) {
     this.coordinate = coordinate;
-    this.#hasFood = false;
   }
 
   /**
