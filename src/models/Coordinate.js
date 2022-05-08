@@ -75,4 +75,11 @@ export class Coordinate {
   copy() {
     return new Coordinate(this.x, this.y);
   }
+
+  /**
+   * @param {Coordinate} coordinate 
+   */
+  equals(coordinate) {
+    return this.x === coordinate.x && this.y === coordinate.y
+  }
 }

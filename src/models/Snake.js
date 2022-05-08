@@ -26,6 +26,14 @@ export class Snake {
     return this.#segments.length;
   }
 
+  get headPosition() {
+    return this.#segments[0].coordinate;
+  }
+
+  get segmentsPositions() {
+    return this.#segments.map((s) => s.coordinate);
+  }
+
   get direction() {
     return this.#direction;
   }
